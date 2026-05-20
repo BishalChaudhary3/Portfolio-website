@@ -1,0 +1,63 @@
+/* styles/themes.css */
+:root {
+  --primary: #6D8196;
+  --primary-dark: #4A4A4A;
+  --primary-light: #CBCBCB;
+  --secondary: #CBCBCB;
+  --accent: #6D8196;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --info: #6D8196;
+  
+  --bg-dark: #4A4A4A;
+  --bg-light: #FFFFE3;
+  --bg-card: #F7F7DE;
+  
+  --text-primary: #4A4A4A;
+  --text-secondary: #6D8196;
+  --text-dark: #4A4A4A;
+  --text-light: #FFFFE3;
+}
+
+.dark {
+  --primary: #CBCBCB;
+  --primary-dark: #FFFFE3;
+  --primary-light: #6D8196;
+  --secondary: #6D8196;
+  --accent: #CBCBCB;
+  
+  --bg-dark: #333333;
+  --bg-light: #4A4A4A;
+  --bg-card: #565656;
+  
+  --text-primary: #FFFFE3;
+  --text-secondary: #CBCBCB;
+  --text-dark: #FFFFE3;
+  --text-light: #4A4A4A;
+}
+
+/* REMOVED the universal transition - it was causing issues */
+
+.bg-gradient-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+}
+
+.text-gradient-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass-primary {
+  background: rgba(109, 129, 150, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(109, 129, 150, 0.2);
+}
+
+.glass-dark {
+  background: rgba(74, 74, 74, 0.82);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(203, 203, 203, 0.2);
+}

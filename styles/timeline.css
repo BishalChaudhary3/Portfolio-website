@@ -1,0 +1,55 @@
+/* styles/timeline.css */
+
+/* Hide scrollbar for timeline */
+.overflow-x-auto::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .overflow-x-auto {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  /* Glass morphism effect */
+  .glassmorphic {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+  
+  .dark .glassmorphic {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Text gradient */
+  .text-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  /* Drag cursor styles */
+  .cursor-grab {
+    cursor: grab;
+  }
+  
+  .cursor-grabbing {
+    cursor: grabbing;
+  }
+  
+  /* Selection prevention during drag */
+  .select-none {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .glassmorphic {
+      backdrop-filter: blur(5px);
+    }
+  }
