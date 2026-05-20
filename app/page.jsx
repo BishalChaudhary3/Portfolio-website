@@ -29,9 +29,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <p>© {new Date().getFullYear()} Bishal Chaudhary. All rights reserved.</p>
           <div className="flex justify-center gap-6 mt-4">
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition">GitHub</a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition">LinkedIn</a>
-            <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition">Twitter</a>
+            <a href="https://github.com/BishalChaudhary3/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition">GitHub</a>
+            <a href="https://www.linkedin.com/in/bishal-chaudhary-459a4a309/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition">LinkedIn</a>
+            <a href="https://x.com/BChaudhary76705" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition">Twitter</a>
           </div>
         </div>
       </footer>

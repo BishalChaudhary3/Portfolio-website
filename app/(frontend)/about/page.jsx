@@ -90,19 +90,19 @@ export default function AboutPage() {
               <h2 className="text-2xl font-bold text-dark dark:text-light mb-4">My Approach</h2>
               <div className="space-y-4">
                 <div>
-                  <h3 className="font-semibold text-dark dark:text-light mb-2">✨ User-Centric Design</h3>
+                  <h3 className="font-semibold text-dark dark:text-light mb-2"> User-Centric Design</h3>
                   <p className="text-gray-600 dark:text-gray-300">I prioritize user experience and accessibility in every project.</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-dark dark:text-light mb-2">⚡ Performance First</h3>
+                  <h3 className="font-semibold text-dark dark:text-light mb-2">Performance First</h3>
                   <p className="text-gray-600 dark:text-gray-300">Optimized code and fast loading times are non-negotiable.</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-dark dark:text-light mb-2">📚 Continuous Learning</h3>
+                  <h3 className="font-semibold text-dark dark:text-light mb-2"> Continuous Learning</h3>
                   <p className="text-gray-600 dark:text-gray-300">I constantly update my skills with the latest technologies.</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-dark dark:text-light mb-2">🤝 Collaboration</h3>
+                  <h3 className="font-semibold text-dark dark:text-light mb-2"> Collaboration</h3>
                   <p className="text-gray-600 dark:text-gray-300">I believe the best results come from working closely with clients.</p>
                 </div>
               </div>

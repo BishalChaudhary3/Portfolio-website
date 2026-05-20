@@ -97,7 +97,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-500 dark:text-gray-400">Location</p>
-                    <p className="font-semibold text-dark dark:text-light">San Francisco, CA</p>
+                    <p className="font-semibold text-dark dark:text-light">Bangalore, India</p>
                   </div>
                 </div>
               </div>
@@ -108,7 +108,7 @@ export default function ContactPage() {
               <div className="flex gap-4">
                 <motion.a
                   whileHover={{ scale: 1.1, y: -5 }}
-                  href="https://github.com/yourusername"
+                  href="https://github.com/BishalChaudhary3"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary/40 transition-colors"
@@ -117,7 +117,7 @@ export default function ContactPage() {
                 </motion.a>
                 <motion.a
                   whileHover={{ scale: 1.1, y: -5 }}
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://www.linkedin.com/in/bishal-chaudhary-459a4a309"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary/40 transition-colors"
@@ -126,7 +126,7 @@ export default function ContactPage() {
                 </motion.a>
                 <motion.a
                   whileHover={{ scale: 1.1, y: -5 }}
-                  href="https://twitter.com/yourusername"
+                  href="https://x.com/BChaudhary76705"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary/40 transition-colors"

@@ -60,7 +60,7 @@ export default function BlogPost() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600 dark:text-gray-400">Loading post...</p>
+          <p className="text-gray-600 dark:text-gray-300">Loading post...</p>
         </div>
       </div>
     );
@@ -70,8 +70,8 @@ export default function BlogPost() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl font-bold mb-4">Post not found</h2>
-          <Link href="/blog" className="text-primary hover:text-primary-dark">
+          <h2 className="text-2xl font-bold text-dark dark:text-light mb-4">Post not found</h2>
+          <Link href="/blog" className="text-primary dark:text-primary-light hover:text-primary-dark">
             Back to Blog
           </Link>
         </div>
@@ -85,7 +85,7 @@ export default function BlogPost() {
         <Link href="/blog">
           <motion.button
             whileHover={{ x: -5 }}
-            className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-primary mb-8"
+            className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light mb-8"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Blog
@@ -99,7 +99,7 @@ export default function BlogPost() {
         >
           {/* Header */}
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{post.title}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-dark dark:text-light mb-4">{post.title}</h1>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600 dark:text-gray-400">
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
@@ -126,36 +126,36 @@ export default function BlogPost() {
           {/* Content */}
           <div className="glassmorphic p-8">
             <div className="prose dark:prose-invert max-w-none">
-              <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-200 whitespace-pre-wrap leading-relaxed">
                 {post.content}
               </p>
             </div>
 
-            {/* Tags - FIXED: Added null/undefined check */}
-            <div className="flex flex-wrap gap-2 mt-8 pt-8 border-t border-white/10">
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2 mt-8 pt-8 border-t border-gray-200 dark:border-white/10">
               {post.tags && post.tags.length > 0 ? (
                 post.tags.map(tag => (
-                  <span key={tag} className="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">
+                  <span key={tag} className="px-3 py-1 bg-primary/20 text-primary dark:text-primary-light rounded-full text-sm">
                     #{tag}
                   </span>
                 ))
               ) : (
-                <span className="text-gray-500 text-sm">No tags</span>
+                <span className="text-gray-500 dark:text-gray-400 text-sm">No tags</span>
               )}
             </div>
 
             {/* Share Buttons */}
-            <div className="flex justify-center gap-4 mt-8 pt-8 border-t border-white/10">
+            <div className="flex justify-center gap-4 mt-8 pt-8 border-t border-gray-200 dark:border-white/10">
               <button
                 onClick={handleShare}
-                className="p-2 glassmorphic rounded-full hover:bg-white/20 transition"
+                className="p-2 glassmorphic rounded-full hover:bg-white/20 transition text-dark dark:text-light"
               >
                 <Share2 className="w-5 h-5" />
               </button>
-              <button className="p-2 glassmorphic rounded-full hover:bg-white/20 transition">
+              <button className="p-2 glassmorphic rounded-full hover:bg-white/20 transition text-dark dark:text-light">
                 <Heart className="w-5 h-5" />
               </button>
-              <button className="p-2 glassmorphic rounded-full hover:bg-white/20 transition">
+              <button className="p-2 glassmorphic rounded-full hover:bg-white/20 transition text-dark dark:text-light">
                 <Bookmark className="w-5 h-5" />
               </button>
             </div>

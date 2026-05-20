@@ -70,15 +70,15 @@ export default function About() {
             <h3 className="text-2xl font-bold text-dark dark:text-light mb-4">What I Do</h3>
             <div className="space-y-4">
               <div>
-                <h4 className="font-semibold text-dark dark:text-light mb-2">💻 Web Development</h4>
+                <h4 className="font-semibold text-dark dark:text-light mb-2"> Web Development</h4>
                 <p className="text-gray-600 dark:text-gray-300">Building responsive, performant web applications with modern frameworks.</p>
               </div>
               <div>
-                <h4 className="font-semibold text-dark dark:text-light mb-2">🎨 UI/UX Design</h4>
+                <h4 className="font-semibold text-dark dark:text-light mb-2"> UI/UX Design</h4>
                 <p className="text-gray-600 dark:text-gray-300">Creating beautiful, intuitive interfaces that users love.</p>
               </div>
               <div>
-                <h4 className="font-semibold text-dark dark:text-light mb-2">🚀 Performance Optimization</h4>
+                <h4 className="font-semibold text-dark dark:text-light mb-2"> Performance Optimization</h4>
                 <p className="text-gray-600 dark:text-gray-300">Making websites lightning fast and SEO-friendly.</p>
               </div>
             </div>

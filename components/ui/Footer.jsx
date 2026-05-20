@@ -38,16 +38,16 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-dark dark:text-light mb-4">Connect</h4>
             <div className="flex gap-4">
-              <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="p-2 glassmorphic rounded-lg hover:bg-white/20 dark:hover:bg-white/10 transition">
+              <a href="https://github.com/BishalChaudhary3" target="_blank" rel="noopener noreferrer" className="p-2 glassmorphic rounded-lg hover:bg-white/20 dark:hover:bg-white/10 transition">
                 <Github className="w-5 h-5 text-dark dark:text-light" />
               </a>
-              <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="p-2 glassmorphic rounded-lg hover:bg-white/20 dark:hover:bg-white/10 transition">
+              <a href="https://www.linkedin.com/in/bishal-chaudhary-459a4a309/" target="_blank" rel="noopener noreferrer" className="p-2 glassmorphic rounded-lg hover:bg-white/20 dark:hover:bg-white/10 transition">
                 <Linkedin className="w-5 h-5 text-dark dark:text-light" />
               </a>
-              <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="p-2 glassmorphic rounded-lg hover:bg-white/20 dark:hover:bg-white/10 transition">
+              <a href="https://x.com/BChaudhary76705" target="_blank" rel="noopener noreferrer" className="p-2 glassmorphic rounded-lg hover:bg-white/20 dark:hover:bg-white/10 transition">
                 <Twitter className="w-5 h-5 text-dark dark:text-light" />
               </a>
-              <a href="mailto:john@example.com" className="p-2 glassmorphic rounded-lg hover:bg-white/20 dark:hover:bg-white/10 transition">
+              <a href="mailto:bishal3633@gmail.com" className="p-2 glassmorphic rounded-lg hover:bg-white/20 dark:hover:bg-white/10 transition">
                 <Mail className="w-5 h-5 text-dark dark:text-light" />
               </a>
             </div>
