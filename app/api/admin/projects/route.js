@@ -1,7 +1,7 @@
 // app/api/admin/projects/route.js
 import { PrismaClient } from '@prisma/client';
 import { NextResponse } from 'next/server';
-import { getCurrentUser, requireAdmin } from '@/lib/auth';
+import { getCurrentUser } from '@/lib/auth';
 
 const prisma = new PrismaClient();
 
@@ -31,7 +31,6 @@ const serializeList = (value) => {
 // GET - Fetch all projects (including drafts) for admin panel
 export async function GET(request) {
   try {
-    // Check if user is admin
     const user = await getCurrentUser(request);
     if (!user || user.role !== 'admin') {
       return NextResponse.json(
@@ -44,10 +43,10 @@ export async function GET(request) {
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '10');
     const search = searchParams.get('search') || '';
-    const status = searchParams.get('status'); // 'published', 'draft', or null for all
+    const status = searchParams.get('status');
     const sortBy = searchParams.get('sortBy') || 'createdAt';
     const sortOrder = searchParams.get('sortOrder') || 'desc';
-    // Build filter conditions
+
     let where = {};
 
     if (search) {
@@ -64,10 +63,8 @@ export async function GET(request) {
       where.published = false;
     }
 
-    // Get total count for pagination
     const total = await prisma.project.count({ where });
 
-    // Get projects with pagination
     const projects = await prisma.project.findMany({
       where,
       orderBy: { [sortBy]: sortOrder },
@@ -96,7 +93,6 @@ export async function GET(request) {
 // POST - Create a new project (admin only)
 export async function POST(request) {
   try {
-    // Check if user is admin
     const user = await getCurrentUser(request);
     if (!user || user.role !== 'admin') {
       return NextResponse.json(
@@ -107,7 +103,6 @@ export async function POST(request) {
 
     const body = await request.json();
 
-    // Validate required fields
     if (!body.title || !body.description || !body.content) {
       return NextResponse.json(
         { error: 'Missing required fields: title, description, content' },
@@ -115,7 +110,6 @@ export async function POST(request) {
       );
     }
 
-    // Generate slug if not provided
     let slug = body.slug;
     if (!slug) {
       slug = body.title
@@ -124,13 +118,11 @@ export async function POST(request) {
         .replace(/^-+|-+$/g, '');
     }
 
-    // Check if slug already exists
     const existingProject = await prisma.project.findUnique({
       where: { slug },
     });
 
     if (existingProject) {
-      // Append timestamp to make slug unique
       slug = `${slug}-${Date.now()}`;
     }
 
@@ -158,7 +150,7 @@ export async function POST(request) {
   }
 }
 
-// PUT - Bulk update projects (publish/unpublish multiple)
+// PUT - Bulk update projects (publish/unpublish/delete multiple)
 export async function PUT(request) {
   try {
     const user = await getCurrentUser(request);
@@ -170,72 +162,7 @@ export async function PUT(request) {
     }
 
     const body = await request.json();
-
-    // Validate required fields
-    if (!body.title || !body.description || !body.content) {
-      return NextResponse.json(
-        { error: 'Missing required fields: title, description, content' },
-        { status: 400 }
-      );
-    }
-
-    // Generate slug if not provided
-    let slug = body.slug;
-    if (!slug) {
-      slug = body.title
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-+|-+$/g, '');
-    }
-
-    // Check if slug already exists
-    const existingProject = await prisma.project.findUnique({
-      where: { slug },
-    });
-
-    if (existingProject) {
-      // Append timestamp to make slug unique
-      slug = `${slug}-${Date.now()}`;
-    }
-
-    const project = await prisma.project.create({
-      data: {
-        title: body.title,
-        slug,
-        description: body.description,
-        content: body.content,
-        techStack: serializeList(body.techStack),
-        githubUrl: body.githubUrl || null,
-        demoUrl: body.demoUrl || null,
-        images: serializeList(body.images),
-        published: body.published ?? true,
-      },
-    });
-
-    return NextResponse.json(serializeProject(project), { status: 201 });
-  } catch (error) {
-    console.error('Error creating project:', error);
-    return NextResponse.json(
-      { error: 'Failed to create project' },
-      { status: 500 }
-    );
-  }
-}
-
-// PUT - Bulk update projects (publish/unpublish multiple)
-export async function PUT(request) {
-  try {
-    // Check if user is admin
-    const user = await getCurrentUser(request);
-    if (!user || user.role !== 'admin') {
-      return NextResponse.json(
-        { error: 'Unauthorized. Admin access required.' },
-        { status: 401 }
-      );
-    }
-
-    const body = await request.json();
-    const { projectIds, action } = body; // action: 'publish', 'unpublish', 'delete'
+    const { projectIds, action } = body;
 
     if (!projectIds || !Array.isArray(projectIds) || projectIds.length === 0) {
       return NextResponse.json(
@@ -253,29 +180,26 @@ export async function PUT(request) {
       });
       return NextResponse.json({
         message: `${result.count} projects published successfully`,
-        count: result.count
+        count: result.count,
       });
-    }
-    else if (action === 'unpublish') {
+    } else if (action === 'unpublish') {
       result = await prisma.project.updateMany({
         where: { id: { in: projectIds } },
         data: { published: false },
       });
       return NextResponse.json({
         message: `${result.count} projects unpublished successfully`,
-        count: result.count
+        count: result.count,
       });
-    }
-    else if (action === 'delete') {
+    } else if (action === 'delete') {
       result = await prisma.project.deleteMany({
         where: { id: { in: projectIds } },
       });
       return NextResponse.json({
         message: `${result.count} projects deleted successfully`,
-        count: result.count
+        count: result.count,
       });
-    }
-    else {
+    } else {
       return NextResponse.json(
         { error: 'Invalid action. Use: publish, unpublish, or delete' },
         { status: 400 }
@@ -293,7 +217,6 @@ export async function PUT(request) {
 // DELETE - Delete multiple projects (admin only)
 export async function DELETE(request) {
   try {
-    // Check if user is admin
     const user = await getCurrentUser(request);
     if (!user || user.role !== 'admin') {
       return NextResponse.json(
@@ -320,7 +243,7 @@ export async function DELETE(request) {
 
     return NextResponse.json({
       message: `${result.count} projects deleted successfully`,
-      count: result.count
+      count: result.count,
     });
   } catch (error) {
     console.error('Error deleting projects:', error);
